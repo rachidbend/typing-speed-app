@@ -1,0 +1,45 @@
+:root {
+  /* Design Tokens from style-guide.md */
+
+  /* Neutral Colors */
+  --color-neutral-900: hsl(0, 0%, 7%);
+  /* #121212 */
+  --color-neutral-800: hsl(0, 0%, 15%);
+  /* #262626 */
+  --color-neutral-500: hsl(240, 3%, 46%);
+  /* #72747d */
+  --color-neutral-400: hsl(240, 1%, 59%);
+  /* #959698 */
+  --color-neutral-0: hsl(0, 0%, 100%);
+  /* #ffffff */
+
+  /* Accent Colors */
+  --color-blue-600: hsl(214, 100%, 55%);
+  /* #198cff */
+  --color-blue-400: hsl(210, 100%, 65%);
+  /* #4da6ff */
+  --color-red-500: hsl(354, 63%, 57%);
+  /* #ce4c5a */
+  --color-green-500: hsl(140, 63%, 57%);
+  /* #4cce77 */
+  --color-yellow-400: hsl(49, 85%, 70%);
+  /* #efe07a */
+
+  /* Typography */
+  --font-family-sora: 'Sora', sans-serif;
+  --font-size-body: 16px;
+
+  /* Spacing & Layout */
+  --container-width-desktop: 1440px;
+  --container-width-mobile: 375px;
+
+  /* Semantic Variables (Blueprint) */
+  --color-text-primary: #F5F5F5;
+  /* Off-white for less eye strain */
+  --color-text-secondary: #A0A0A0;
+  /* Muted gray */
+  --color-accent-gold: #FFD700;
+
+  --spacing-l: 2rem;
+  --spacing-xl: 2.5rem;
+}

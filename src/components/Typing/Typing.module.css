@@ -1,0 +1,90 @@
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    gap: 28px;
+
+}
+
+.sepirationLine {
+    display: inline-block;
+    height: 24px;
+    width: 1px;
+    background-color: var(--color-neutral-500);
+    opacity: 0.4;
+    overflow: hidden;
+}
+
+
+.statBox {
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.statLabel {
+    font-size: 20px;
+    color: var(--color-neutral-500);
+    font-weight: 500;
+}
+
+.statValue {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-neutral-0);
+    letter-spacing: -0.05em;
+}
+
+.highlightTime {
+    color: var(--color-yellow-400);
+    /* Add subtle glow */
+    /* text-shadow: 0 0 30px rgba(239, 224, 122, 0.2); */
+}
+
+.accuracyPercent {
+    color: var(--color-red-500);
+}
+
+@media (max-width: 640px) {
+    .statsContainer {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .statValue {
+        font-size: 2.5rem;
+    }
+}
+
+/* Typing Area Placeholder specific styles */
+.typingAreaPlaceholder {
+    width: 100%;
+    height: 16rem;
+    margin-top: 4rem;
+
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+}
+
+.placeholderText {
+    color: hsl(var(--color-neutral-500));
+    font-size: 1.5rem;
+    font-weight: 500;
+}
