@@ -89,7 +89,7 @@ function App() {
     useEffect(() => {
         if (typingStatus === 'finished') {
             updatePersonalBest(wpm);
-            
+
         }
     }, [typingStatus, wpm, updatePersonalBest]);
 

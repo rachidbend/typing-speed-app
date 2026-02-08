@@ -25,6 +25,15 @@
     /* Allow scrolling if text is long */
 }
 
+.mobileInput {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    left: -9999px;
+    pointer-events: none;
+}
+
 .passageText {
     font-size: 38px;
     font-weight: 500;
@@ -171,4 +180,31 @@
     background: var(--color-neutral-700);
     color: var(--color-neutral-0);
     transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+    .typingWrapper {
+        padding: 24px 0;
+        padding-bottom: 56px;
+    }
+
+    .passageText {
+        font-size: 26px;
+        line-height: 1.45;
+    }
+
+    .startButton {
+        font-size: 15px;
+        padding: 10px 20px;
+        margin-bottom: 12px;
+    }
+
+    .startInstructions {
+        font-size: 12px;
+    }
+
+    .activeRestartButton {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
 }

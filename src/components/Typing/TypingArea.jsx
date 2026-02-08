@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styles from './TypingArea.module.css';
 import classNames from 'classnames';
 import iconReset from './../../assets/images/icon-restart.svg';
@@ -6,6 +6,7 @@ import iconReset from './../../assets/images/icon-restart.svg';
 const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, setIsFocused, onRestart }) => {
     // We want to keep the cursor in view if text is long (auto-scroll)
     const containerRef = useRef(null);
+    const inputRef = useRef(null);
 
     // Internal state moved to parent (App.jsx)
     // const [isFocused, setIsFocused] = useState(false);
@@ -18,9 +19,41 @@ const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, set
         setIsFocused(true);
     };
 
+    useEffect(() => {
+        if (isFocused && status !== 'finished') {
+            if (inputRef.current) {
+                try {
+                    inputRef.current.focus({ preventScroll: true });
+                } catch {
+                    inputRef.current.focus();
+                }
+            }
+        }
+
+        if (status === 'finished') {
+            inputRef.current?.blur();
+        }
+    }, [isFocused, status]);
+
     return (
         <>
-            <div className={styles.typingWrapper} onClick={handleStartClick}>
+            <div
+                className={styles.typingWrapper}
+                onClick={handleStartClick}
+                onTouchStart={handleStartClick}
+            >
+                <input
+                    ref={inputRef}
+                    className={styles.mobileInput}
+                    inputMode="text"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    spellCheck={false}
+                    aria-label="Typing input"
+                    onInput={(e) => {
+                        e.currentTarget.value = '';
+                    }}
+                />
                 <div className={styles.textContainer} ref={containerRef}>
                     <p className={classNames(styles.passageText, { [styles.blurred]: showOverlay })}>
                         {text.split('').map((char, index) => {
@@ -51,10 +84,17 @@ const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, set
                 {/* Start Overlay */}
                 {showOverlay && (
                     <div className={styles.startOverlay}>
-                        <button className={styles.startButton} onClick={(e) => {
-                            e.stopPropagation(); // prevent wrapper click double trigger
-                            handleStartClick();
-                        }}>
+                        <button
+                            className={styles.startButton}
+                            onClick={(e) => {
+                                e.stopPropagation(); // prevent wrapper click double trigger
+                                handleStartClick();
+                            }}
+                            onTouchStart={(e) => {
+                                e.stopPropagation();
+                                handleStartClick();
+                            }}
+                        >
                             Start Typing Test
                         </button>
                         <p className={styles.startInstructions}>Or click the text and start typing</p>

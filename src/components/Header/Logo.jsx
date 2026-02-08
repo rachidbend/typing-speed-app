@@ -1,14 +1,15 @@
 import React from 'react';
-import logo from '../../assets/images/logo-large.svg';
-// We don't import styles here directly to avoid conflict, relying on parent class or inline if specific size needed.
-// actually Header.module.css targets .logo img maybe? 
-// Blueprint said: Icon must be perfectly square 24x24 px on desktop.
-// Let's enforce size here or via class.
+import logoLarge from '../../assets/images/logo-large.svg';
+import logoSmall from '../../assets/images/logo-small.svg';
+import styles from './Logo.module.css';
 
 const Logo = () => {
     return (
-        <div>
-            <img src={logo} alt="Typing Speed Test" />
+        <div className={styles.logoWrapper}>
+            <picture>
+                <source media="(max-width: 640px)" srcSet={logoSmall} />
+                <img className={styles.logoImage} src={logoLarge} alt="Typing Speed Test" />
+            </picture>
         </div>
     );
 };

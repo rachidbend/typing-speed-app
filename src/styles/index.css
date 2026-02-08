@@ -65,3 +65,14 @@ body {
     max-width: 1216px;
     width: 100%;
 }
+
+@media (max-width: 640px) {
+    #root {
+        padding: 20px 16px;
+    }
+
+    body {
+        background-position: 10% 10%, 90% 90%;
+        background-size: 120px, 140px;
+    }
+}

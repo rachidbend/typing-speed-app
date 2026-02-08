@@ -78,11 +78,16 @@
     letter-spacing: -0.6px;
 }
 
+.pbPersonal {}
+
+.pbBestLabel {}
+
 .pbIcon {}
 
-@media (max-width: 375px) {
+@media (max-width: 640px) {
     .headerContainer {
-        padding: 1.5rem 1.25rem;
+        padding: 0 0 0.5rem;
+        margin-bottom: 28px;
         /* Mobile logic: Personal Best behavior?
            "Shift to absolute top right or shrink"
            Let's try shrinking and keeping flow first, or column if needed.
@@ -107,6 +112,22 @@
     }
 
     .personalBest {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+        gap: 0.4rem;
+    }
+
+    .pbTitle,
+    .pbValue {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .personalBest img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pbPersonal {
+        display: none;
     }
 }
