@@ -3,7 +3,7 @@ import styles from './TypingArea.module.css';
 import classNames from 'classnames';
 import iconReset from './../../assets/images/icon-restart.svg';
 
-const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, setIsFocused, onRestart }) => {
+const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, setIsFocused, onRestart, onInputKey }) => {
     // We want to keep the cursor in view if text is long (auto-scroll)
     const containerRef = useRef(null);
     const inputRef = useRef(null);
@@ -15,25 +15,55 @@ const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, set
     // Note: If status becomes 'running' (user typed), overlay hides automatically via status check
     const showOverlay = status === 'idle' && !isFocused;
 
+    const focusInput = () => {
+        if (inputRef.current) {
+            try {
+                inputRef.current.focus({ preventScroll: true });
+            } catch {
+                inputRef.current.focus();
+            }
+        }
+    };
+
+    const shouldHandleVirtualInput = () => {
+        if (typeof window === 'undefined' || !window.matchMedia) return false;
+        return window.matchMedia('(pointer: coarse)').matches;
+    };
+
     const handleStartClick = () => {
         setIsFocused(true);
+        focusInput();
     };
 
     useEffect(() => {
         if (isFocused && status !== 'finished') {
-            if (inputRef.current) {
-                try {
-                    inputRef.current.focus({ preventScroll: true });
-                } catch {
-                    inputRef.current.focus();
-                }
-            }
+            focusInput();
         }
 
         if (status === 'finished') {
             inputRef.current?.blur();
         }
     }, [isFocused, status]);
+
+    const handleBeforeInput = (event) => {
+        if (!onInputKey) return;
+        if (!shouldHandleVirtualInput()) return;
+        const { data, inputType } = event.nativeEvent;
+
+        console.log('[TypingArea] beforeinput', { inputType, data });
+
+        if (inputType === 'deleteContentBackward') {
+            onInputKey({ key: 'Backspace' });
+        }
+    };
+
+    const handleInputKeyDown = (event) => {
+        if (!onInputKey) return;
+        if (shouldHandleVirtualInput()) return;
+
+        onInputKey(event);
+        event.stopPropagation();
+    };
 
     return (
         <>
@@ -42,15 +72,31 @@ const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, set
                 onClick={handleStartClick}
                 onTouchStart={handleStartClick}
             >
-                <input
+                <textarea
                     ref={inputRef}
                     className={styles.mobileInput}
                     inputMode="text"
                     autoCapitalize="off"
                     autoCorrect="off"
+                    autoComplete="off"
                     spellCheck={false}
                     aria-label="Typing input"
+                    rows={1}
+                    onPointerDown={() => setIsFocused(true)}
+                    onFocus={() => setIsFocused(true)}
+                    onBeforeInput={handleBeforeInput}
+                    onKeyDown={handleInputKeyDown}
                     onInput={(e) => {
+                        if (onInputKey && shouldHandleVirtualInput()) {
+                            const value = e.currentTarget.value;
+                            if (value) {
+                                console.log('[TypingArea] input', { value });
+                                [...value].forEach((char) => {
+                                    onInputKey({ key: char });
+                                });
+                            }
+                        }
+
                         e.currentTarget.value = '';
                     }}
                 />

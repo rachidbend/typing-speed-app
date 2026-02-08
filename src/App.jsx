@@ -95,6 +95,11 @@ function App() {
 
     // Global Key Handler Wrapper to intercept first key if not focused
     const handleGlobalKeyDown = useCallback((e) => {
+        const targetTag = e.target?.tagName;
+        if (targetTag === 'INPUT' || targetTag === 'TEXTAREA') {
+            return;
+        }
+
         // If test is finished, ignore
         if (typingStatus === 'finished') return;
 
@@ -163,6 +168,7 @@ function App() {
                         isFocused={isFocused}
                         setIsFocused={setIsFocused}
                         onRestart={handleRestart}
+                        onInputKey={handleKeyDown}
                     />
                 </div>
             )}

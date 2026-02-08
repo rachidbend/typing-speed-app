@@ -27,11 +27,23 @@
 
 .mobileInput {
     position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    left: -9999px;
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: transparent;
+    caret-color: transparent;
+    z-index: 5;
+    pointer-events: auto;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.2;
 }
 
 .passageText {
