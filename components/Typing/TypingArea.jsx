@@ -81,6 +81,7 @@ const TypingArea = ({ text, cursor, typedHistory, active, status, isFocused, set
                     autoComplete="off"
                     spellCheck={false}
                     aria-label="Typing input"
+                    onFocus={() => setIsFocused(true)}
                     onBeforeInput={handleBeforeInput}
                     onKeyDown={handleInputKeyDown}
                     onInput={(e) => {

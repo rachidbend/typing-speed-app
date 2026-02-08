@@ -27,16 +27,18 @@
 
 .mobileInput {
     position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0.01;
-    width: 1px;
-    height: 1px;
-    left: 0;
-    top: 0;
     border: 0;
     padding: 0;
+    margin: 0;
     background: transparent;
     color: transparent;
     caret-color: transparent;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .passageText {
@@ -211,5 +213,11 @@
     .activeRestartButton {
         font-size: 18px;
         padding: 8px 16px;
+    }
+}
+
+@media (pointer: coarse) {
+    .mobileInput {
+        pointer-events: auto;
     }
 }
