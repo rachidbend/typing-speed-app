@@ -1,0 +1,184 @@
+/* Full screen replacement (replaces Dashboard/TypingArea) */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 400px;
+    /* Or adjust based on space */
+    animation: fadeIn 0.4s ease;
+    padding: 2rem 0;
+}
+
+.starLeft {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.starRight {
+    position: absolute;
+    right: 0;
+    bottom: 40%;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.iconWrapper {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-neutral-0);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--color-neutral-500);
+    margin-bottom: 48px;
+    font-weight: 400;
+}
+
+.statsGrid {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.statCard {
+    background: transparent;
+    border: 1px solid var(--color-neutral-800);
+    border-radius: 12px;
+    padding: 16px 24px;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.label {
+    font-size: 14px;
+    color: var(--color-neutral-500);
+    font-weight: 500;
+}
+
+.value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-neutral-0);
+}
+
+.valueError {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-red-500);
+}
+
+.valueChars {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.charCorrect {
+    color: var(--color-green-500);
+}
+
+.charDivider {
+    color: var(--color-neutral-500);
+    margin: 0 4px;
+    font-weight: 400;
+}
+
+.charError {
+    color: var(--color-red-500);
+}
+
+.restartButton {
+    background: var(--color-neutral-0);
+    color: var(--color-neutral-900);
+    border: none;
+    border-radius: 8px;
+    /* Slightly squarer than pill as per image? No image shows rounded stats but pill button. */
+    /* Wait, image shows explicit pill button "Go Again". My bad. */
+    border-radius: 999px;
+
+    padding: 12px 32px;
+    font-family: var(--font-family-sora);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.restartButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.refreshIcon {
+    /* Styles for SVG icon if needed */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 1.5rem 0;
+    }
+
+    .title {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .statsGrid {
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+
+    .statCard {
+        width: 100%;
+        min-width: 0;
+        padding: 14px 18px;
+    }
+}

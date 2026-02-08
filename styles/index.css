@@ -1,0 +1,78 @@
+@import './variables.css';
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../assets/fonts/Sora/Sora-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-body);
+    background-color: var(--color-neutral-900);
+    color: var(--color-neutral-0);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+
+    /* Background Pattern from design */
+    background-image:
+        url('../assets/images/pattern-star-1.svg'),
+        url('../assets/images/pattern-star-2.svg');
+    background-repeat: no-repeat, no-repeat;
+    /* Adjust positions to match design: One top leftish, one bottom rightish */
+    background-position: 15% 15%, 85% 85%;
+    background-size: auto, auto;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-neutral-900);
+    padding: 30px;
+    align-items: center;
+
+}
+
+/* Utility to helper using HSL variables */
+.text-neutral-500 {
+    color: var(--color-neutral-500);
+}
+
+.text-yellow-400 {
+    color: var(--color-yellow-400);
+}
+
+.bg-neutral-800 {
+    background-color: var(--color-neutral-800);
+}
+
+.layout-container {
+    max-width: 1216px;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    #root {
+        padding: 20px 16px;
+    }
+
+    body {
+        background-position: 10% 10%, 90% 90%;
+        background-size: 120px, 140px;
+    }
+}

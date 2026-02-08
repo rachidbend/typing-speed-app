@@ -1,0 +1,229 @@
+.sepirationLine {
+    display: inline-block;
+    height: 24px;
+    width: 1px;
+    background-color: var(--color-neutral-500);
+    opacity: 0.4;
+    overflow: hidden;
+}
+
+.controlsBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+.selectorContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 1rem;
+}
+
+.label {
+
+    font-weight: 600;
+    color: var(--color-neutral-500);
+    font-size: 16px;
+    margin-left: 0.5rem;
+}
+
+.pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dropdownWrapper {
+    display: none;
+    width: 100%;
+    position: relative;
+    flex: 1;
+}
+
+.dropdownButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-neutral-800);
+    color: var(--color-neutral-0);
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-family: var(--font-family-sora);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dropdownButtonOpen {
+    border-color: var(--color-blue-600);
+    box-shadow: 0 0 0 1px rgba(25, 140, 255, 0.4);
+}
+
+.dropdownValue {
+    text-align: left;
+}
+
+.dropdownChevron {
+    width: 12px;
+    height: 12px;
+}
+
+.dropdownMenu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.98);
+    border: 1px solid var(--color-neutral-800);
+    border-radius: 12px;
+    padding: 8px;
+    list-style: none;
+    margin: 0;
+    z-index: 30;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+}
+
+.dropdownItem {
+    width: 100%;
+}
+
+.dropdownOption {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    color: var(--color-neutral-0);
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-family: var(--font-family-sora);
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdownOption:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.dropdownOptionActive {
+    background: rgba(25, 140, 255, 0.08);
+}
+
+.optionIndicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-neutral-500);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.optionIndicatorActive {
+    border-color: var(--color-blue-600);
+    background: var(--color-blue-600);
+    box-shadow: 0 0 0 3px rgba(25, 140, 255, 0.15);
+}
+
+.optionText {
+    color: var(--color-neutral-0);
+}
+
+.optionTextActive {
+    color: var(--color-blue-600);
+}
+
+.pill {
+    background: transparent;
+    border: 1px solid var(--color-neutral-400);
+    color: var(--color-neutral-0);
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: var(--font-family-sora);
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.pill:hover {
+    color: hsl(var(--color-neutral-0));
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.pill.active {
+    background-color: transparent;
+    border-color: var(--color-blue-600);
+    color: var(--color-blue-600);
+}
+
+.restartButton {
+    background: hsl(var(--color-neutral-800));
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    /* Squircle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-left: 1rem;
+}
+
+.restartButton:hover {
+    background: hsl(var(--color-neutral-0));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.restartButton:hover img {
+    filter: invert(1) brightness(0);
+}
+
+@media (max-width: 900px) {
+    .controlsBar {
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .selectorContainer {
+        background: transparent;
+        padding: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .controlsBar {
+        justify-content: space-between;
+        margin-top: 0;
+        gap: 12px;
+    }
+
+    .selectorContainer {
+        flex: 1;
+        gap: 0;
+    }
+
+    .label,
+    .pills {
+        display: none;
+    }
+
+    .dropdownWrapper {
+        display: block;
+    }
+}
