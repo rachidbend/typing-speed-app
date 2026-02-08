@@ -1,9 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './Controls.module.css';
+import CustomDropdown from './CustomDropdown';
 
 const ModeSelector = ({ currentMode, onChange }) => {
     // modes: 'timed' | 'passage'
+    const options = [
+        { value: 'timed', label: 'Timed (60s)' },
+        { value: 'passage', label: 'Passage' }
+    ];
+
     return (
         <div className={styles.selectorContainer}>
             <span className={styles.label}>Mode:</span>
@@ -25,6 +31,12 @@ const ModeSelector = ({ currentMode, onChange }) => {
                     Passage
                 </button>
             </div>
+            <CustomDropdown
+                label="Mode"
+                value={currentMode}
+                options={options}
+                onChange={onChange}
+            />
         </div>
     );
 };

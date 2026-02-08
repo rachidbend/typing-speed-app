@@ -1,0 +1,16 @@
+.logoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .logoImage {
+        height: 24px;
+    }
+}

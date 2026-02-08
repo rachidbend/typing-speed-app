@@ -7,7 +7,10 @@ const PersonalBest = ({ wpm }) => {
         <div className={styles.personalBest}>
             <img src={iconTrophy} alt="Trophy icon" />
             <div>
-                <span className={styles.pbTitle}>Personal best: </span>
+                <span className={styles.pbTitle}>
+                    <span className={styles.pbPersonal}>Personal </span>
+                    <span className={styles.pbBestLabel}>best:</span>
+                </span>
                 <span className={styles.pbValue}>{wpm} WPM</span>
             </div>
         </div>

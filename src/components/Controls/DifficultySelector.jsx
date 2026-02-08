@@ -1,9 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './Controls.module.css';
+import CustomDropdown from './CustomDropdown';
 
 const DifficultySelector = ({ currentDifficulty, onChange }) => {
     const difficulties = ['easy', 'medium', 'hard'];
+    const options = difficulties.map((diff) => ({
+        value: diff,
+        label: diff.charAt(0).toUpperCase() + diff.slice(1)
+    }));
 
     return (
         <div className={styles.selectorContainer}>
@@ -21,6 +26,12 @@ const DifficultySelector = ({ currentDifficulty, onChange }) => {
                     </button>
                 ))}
             </div>
+            <CustomDropdown
+                label="Difficulty"
+                value={currentDifficulty}
+                options={options}
+                onChange={onChange}
+            />
         </div>
     );
 };
